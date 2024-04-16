@@ -1,3 +1,6 @@
-from django.shortcuts import render
+from django.views.generic import ListView
+from .models import Category, Item
 
-# Create your views here.
+class MenuListView(ListView):
+    model = Category
+    template_name = 'kiosk/menu_list.html'
