@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <!-- 탭 -->
-        <ul class="nav nav-underline">
+        <ul class="nav nav-underline nav-fill">
             {% for category in object_list %}
                 <li class="nav-item">
                     <a href="#nav{{ category.id }}" class="nav-link {% if forloop.first %} active {% endif %}" data-toggle="tab">{{ category.name }}</a>
@@ -19,12 +19,22 @@
         </ul>
 
         <!-- 탭의 내용 -->
-        <div class="tab-content">
+        <div class="tab-content container mt-4">
             {% for category in object_list %}
                 <div class="tab-pane fade {% if forloop.first %} active show {% endif %}" id="nav{{ category.id }}">
-                    {% for item in category.item_set.all %}
-                        {{ item.name }}
-                    {% endfor %}
+                    <div class="row row-cols-auto">
+                        {% for item in category.item_set.all %}
+                            <div class="col">
+                                <div class="card" style="width: 18rem;">
+                                    <img src="..." alt="" class="card-img-top">
+                                    <div class="card-body">
+                                        <h3 class="card-title">{{ item.name }}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    </div>
                 </div>
             {% endfor %}
         </div>
