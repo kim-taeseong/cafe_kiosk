@@ -28,7 +28,7 @@
                                 <div class="card" style="width: 18rem;">
                                     <img src="..." alt="" class="card-img-top">
                                     <div class="card-body">
-                                        <h3 class="card-title">{{ item.name }}</h3>
+                                        <h3 class="card-title"><a href="{% url 'detail' item.id %}" class="link-offset-2 link-underline link-underline-opacity-0 link-underline-opacity-100-hover">{{ item.name }}</a></h3>
                                     </div>
                                 </div>
                             </div>
