@@ -1,4 +1,6 @@
 from django.views.generic import ListView, DetailView
+from django.views.generic.edit import DeleteView
+from django.urls import reverse_lazy
 from .models import Category, Item
 
 class MenuListView(ListView):
@@ -8,3 +10,7 @@ class MenuListView(ListView):
 class MenuDetailView(DetailView):
     model = Item
     template_name = 'kiosk/menu_detail.html'
+
+class MenuDeleteView(DeleteView):
+    model = Item
+    success_url = reverse_lazy('kiosk:index')

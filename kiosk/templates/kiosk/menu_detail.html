@@ -11,7 +11,29 @@
     <div class="container">
         <h2>{{ object.name }}</h2>
         <p>{{ object.price }}</p>
-        <button type="button" class="btn btn-light" onclick=home()>돌아가기</button>
+        <button type="button" id="show-modal" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-item">삭제</button></a>
+        <button type="button" class="btn btn-light" onclick="home()">돌아가기</button>
+    </div>
+
+    <div id="modal-item" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title">메뉴 삭제</h6>
+                    <button type="button" class="btn-close close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    해당 메뉴(<b>{{ object.name }}</b>)를 삭제하시겠습니까?
+                </div>
+                <div class="modal-footer">
+                    <form method="post" action="{% url 'kiosk:delete' object.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">예</button>
+                        <button type="button" class="btn btn-light close" data-bs-dismiss="modal">아니오</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
     <script>
         function home() {
